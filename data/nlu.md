@@ -60,12 +60,19 @@
 - Oh, sorry, in [Italy](location)
 - in [delhi](location)
 - I am looking for some restaurants in [Mumbai](location)
+- I am looking for some restaurants in [Kolkata](location)
 - I am looking for [mexican indian fusion](cuisine)
 - can you book a table in [rome](location) in a [moderate](price:mid) price range with [british](cuisine) food for [four](people:4) people
 - [central](location) [indian](cuisine) restaurant
 - please help me to find restaurants in [pune](location)
 - Please find me a restaurantin [bangalore](location)
 - [mumbai](location)
+- [bangalore](location)
+- [Kolkata](location)
+- [kolkata](location:Kolkata)
+- [calcutta](location:Kolkata)
+- [Varanasi](location)
+- [varanasi](location:Varanasi)
 - [Chinese](cuisine:chinese)
 - show me restaurants
 - [mumbai](location)
@@ -129,6 +136,9 @@
 
 ## regex:pincode
 - [0-9]{6}
+
+## regex:email
+[A-z0-9._%+-]+@[A-z0-9.-]+\\.[A-z.]{2,4}
 
 ## lookup:location
 - Ahmedabad 

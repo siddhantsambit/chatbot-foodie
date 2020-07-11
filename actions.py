@@ -10,6 +10,7 @@ import send_mail
 
 config={ "user_key":"f4924dc9ad672ee8c4f8c84743301af5"}
 zomato = zomatopy.initialize_app(config)
+email_data = []
 
 class ActionSearchRestaurants(Action):
 	def name(self):
@@ -26,41 +27,46 @@ class ActionSearchRestaurants(Action):
 		cuisines_dict={'bakery':5,'chinese':25,'cafe':30,'italian':55,'biryani':7,'north indian':50,'south indian':85,'mexican':73,'american':1}
 		results=zomato.restaurant_search("", lat, lon, str(cuisines_dict.get(cuisine)), 5)
 		d = json.loads(results)
+		def sort(list):
+			list.sort(key=lambda x: x[3])
+			return list
+
 		response=""
+		
 		if d['results_found'] == 0:
 			response= "no results"
 		else:
 			if price =='Lesser than Rs. 300':
-        		for i,restaurant in enumerate(d['restaurants']):
-                    averageCostFor2 = restaurant['restaurant']['average_cost_for_two']
-                    if averageCostFor2 <= 300:
-                        name = restaurant['restaurant']['name']
-                        address = restaurant['restaurant']['location']['address']
-                        user_rating = restaurant['restaurant']['user_rating']['aggregate_rating']
+				for i,restaurant in enumerate(d['restaurants']):
+					averageCostFor2 = restaurant['restaurant']['average_cost_for_two']
+					if averageCostFor2 <= 300:
+						name = restaurant['restaurant']['name']
+						address = restaurant['restaurant']['location']['address']
+						user_rating = restaurant['restaurant']['user_rating']['aggregate_rating']
+						send_list = [name,address,averageCostFor2,user_rating]
+						email_data.append(send_list)
 
-                        send_list = [name,address,averageCostFor2,user_rating]
-                        email_data.append(send_list)
-
-            elif price =='Rs. 300 to 700':
-                for i,restaurant in enumerate(d['restaurants']):
-                    averageCostFor2 = restaurant['restaurant']['average_cost_for_two']
-                    if averageCostFor2 >= 300 and averageCostFor2 <= 700:
-                        name = restaurant['restaurant']['name']
-                        address = restaurant['restaurant']['location']['address']
-                        user_rating = restaurant['restaurant']['user_rating']['aggregate_rating']
-
-                        send_list = [name,address,averageCostFor2,user_rating]
-                        email_data.append(send_list)
-            elif price =='More than 700':
-                for i,restaurant in enumerate(d['restaurants']):
-                    averageCostFor2 = restaurant['restaurant']['average_cost_for_two']
-                    if averageCostFor2 >= 700:
-                        name = restaurant['restaurant']['name']
-                        address = restaurant['restaurant']['location']['address']
-                        user_rating = restaurant['restaurant']['user_rating']['aggregate_rating']
-
-                        send_list = [name,address,averageCostFor2,user_rating]
-                        email_data.append(send_list)
+			elif price =='Rs. 300 to 700':
+				for i,restaurant in enumerate(d['restaurants']):
+					averageCostFor2 = restaurant['restaurant']['average_cost_for_two']
+					if averageCostFor2 >= 300 and averageCostFor2 <= 700:
+						name = restaurant['restaurant']['name']
+						address = restaurant['restaurant']['location']['address']
+						user_rating = restaurant['restaurant']['user_rating']['aggregate_rating']
+						send_list = [name,address,averageCostFor2,user_rating]
+						email_data.append(send_list)
+			
+			elif price =='More than 700':
+				for i,restaurant in enumerate(d['restaurants']):
+					averageCostFor2 = restaurant['restaurant']['average_cost_for_two']
+					if averageCostFor2 >= 700:
+						name = restaurant['restaurant']['name']
+						address = restaurant['restaurant']['location']['address']
+						user_rating = restaurant['restaurant']['user_rating']['aggregate_rating']
+						send_list = [name,address,averageCostFor2,user_rating]
+						email_data.append(send_list)
+		
+		sorted_list = sort(email_data)
 		
 		dispatcher.utter_message("-----"+response)
 		return [SlotSet('location',loc)]
