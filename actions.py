@@ -29,8 +29,7 @@ class ActionSearchRestaurants(Action):
 		d1 = json.loads(location_detail)
 		lat = d1["location_suggestions"][0]["latitude"]
 		lon = d1["location_suggestions"][0]["longitude"]
-		cuisines_dict = {'bakery': 5, 'chinese': 25, 'cafe': 30, 'italian': 55,
-		    'biryani': 7, 'north indian': 50, 'south indian': 85, 'mexican': 73, 'american': 1}
+		cuisines_dict = {'bakery': 5, 'chinese': 25, 'cafe': 30, 'italian': 55,'biryani': 7, 'north indian': 50, 'south indian': 85, 'mexican': 73, 'american': 1,'thai':95}
 		results = zomato.restaurant_search(
 		    "", lat, lon, str(cuisines_dict.get(cuisine)), 100)
 		d = json.loads(results)
@@ -95,7 +94,8 @@ class ActionSearchRestaurants(Action):
 
 		else:
 			for i, detail in enumerate(sorted_list):
-				response = str(i+1) + ". " + detail[0] + " in " + \
+				j=i
+				response = str(j+1) + ". " + detail[0] + " in " + \
 				               detail[1] + " has been rated " + detail[3] + "\n"
 				dispatcher.utter_message(response)
 				if i == 4:
@@ -105,29 +105,28 @@ class ActionSearchRestaurants(Action):
 
 
 class ActionSendEmail(Action):
+    def __init__(self):
+        pass
     def name(self):
         return 'action_send_email'
-
     def run(self, dispatcher, tracker, domain):
-		# Get user's email id
-	    to_email = tracker.get_slot('emailid')
-		# Get location and cuisines
-		loc = tracker.get_slot('location')
-		cuisine = tracker.get_slot('cuisine')
+        # Get user's email id
+        to_email = tracker.get_slot('emailid')
+        # Get location and cuisines
+        loc = tracker.get_slot('location')
+        cuisine = tracker.get_slot('cuisine')
         # global d_email_rest
-		len_list = len(sorted_list)
-		if len_list < 10:
-			email_rest_count = len(sorted_list)
-		else:
-			email_rest_count = 10
+        len_list = len(sorted_list)
+        if len_list < 10:
+            email_rest_count = len(sorted_list)
+        else:
+            email_rest_count = 10
         d_email_subj = "Top " + str(email_rest_count) + " " + cuisine + " restaurants in " + str(loc)
-        d_email_msg = "<b> Hi there!!! Here are the " + d_email_subj + ".</b><br/>"
-
-        for i,restaurant in enumerate(sorted_list):
-            d_email_msg = d_email_msg + restaurant[0]+ " in "+ restaurant[1]+" has been rated " + restaurant[3] + "\n"
-			if i == (email_rest_count-1):
-				break
-		
+        d_email_msg = "Hi there!!! Here are the " + d_email_subj + "." + "\n"
+        for i, restaurant in enumerate(sorted_list):
+            d_email_msg = d_email_msg + restaurant[0] + " in " + restaurant[1] + " has been rated " + restaurant[3] + "\n"
+            if i == (email_rest_count - 1):
+                break
         s = smtplib.SMTP_SSL("smtp.gmail.com", 465)
         # s.starttls()
         s.login("foodieupgradchatbot@gmail.com", "foodie1234")
@@ -138,8 +137,8 @@ class ActionSendEmail(Action):
         msg['To'] = to_email
         s.send_message(msg)
         s.quit()
-        dispatcher.utter_message("**** Email Sent to " + to_email +" ! HAPPY DINING :) ****")
-        return []
+        dispatcher.utter_message("**** Email Sent to " + to_email + " ! HAPPY DINING :) ****")
+        return[]
 
 class VerifyLocation(Action):
     def name(self):

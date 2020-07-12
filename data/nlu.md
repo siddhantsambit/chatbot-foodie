@@ -21,7 +21,6 @@
 - farewell
 - Bye bye
 - have a good one
-- Bon Appetit!
 
 ## intent:greet
 - hey
@@ -34,6 +33,8 @@
 - dear sir
 - Hi
 - Hola
+- Hey
+- Hello!
 
 ## intent:restaurant_search
 - i'm looking for a place to eat
@@ -143,7 +144,15 @@
 - [Mexican]{"entity": "cuisine", "value": "mexican"}
 - [Italian]{"entity": "cuisine", "value": "italian"}
 - [Chinese]{"entity": "cuisine", "value": "chinese"}
+- [Thai]{"entity": "cuisine", "value": "thai"}
+- [Cafe]{"entity": "cuisine", "value": "cafe"}
+- [Bhai]{"entity": "cuisine", "value": "biryani"}
+- [Bakery]{"entity": "cuisine", "value": "bakery"}
 - [chinese](cuisine)
+- [thai](cuisine)
+- [bakery](cuisine)
+- [cafe](cuisine)
+- [biryani](cuisine)
 - [Lithuania](location)
 - Oh, sorry, in [Italy](location)
 - I am looking for some restaurants in [Mumbai](location)
@@ -200,14 +209,24 @@
 - looking for some restaurants in [Bangalore]{"entity": "location", "value": "bangalore"}
 - mail to [siddhantsambit@gmail.com](emailid)
 - I am hungry. Looking out for some good restaurants
-- [bengaluru]{"entity": "location", "value": "bangalore"}
-- [American]{"entity": "cuisine", "value": "american"}
-- [Rs. 300 to 700](price)
-- [Send Mail](email)
 - Yes. please send it to [siddhantsambit@gmail.com](emailid)
+- Can you suggest some good restaurants in [Rishikesh](location)
+- Okay show me some in [Allahabd]{"entity": "location", "value": "Allahabad"}
+- I'll prefer [chines]{"entity": "cuisine", "value": "chinese"}
+- yes. Please send it to [tinaghosh1990@gmail.com](emailid)
+- Can you suggest some good restaurants in [kolkata]{"entity": "location", "value": "Kolkata"}
+- in [mubaim](location)
+- in [Mumbai](location)
+- [tinaghosh1990@gmail.com](emailid)
+- I'm hungry. Looking out for some good [chinese](cuisine) restaurants in [Chandigarh](location)
+- [Lesser than Rs. 300](price)
+- [Dont Send Email](email)
 
 ## synonym:4
 - four
+
+## synonym:Allahabad
+- Allahabd
 
 ## synonym:Bokaro Steel City
 - Bokaro
@@ -245,10 +264,21 @@
 ## synonym:american
 - American
 
+## synonym:bakery
+- Bakery
+
 ## synonym:bangalore
 - bengaluru
 - Bengaluru
 - Bangalore
+
+## synonym:biryani
+- Bhai
+- biriyani
+- Biriyani
+
+## synonym:cafe
+- Cafe
 
 ## synonym:chinese
 - chines
@@ -269,6 +299,9 @@
 
 ## synonym:south indian
 - South Indian
+
+## synonym:thai
+- Thai
 
 ## synonym:vegetarian
 - veggie

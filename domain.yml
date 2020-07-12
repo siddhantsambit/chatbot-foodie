@@ -1,16 +1,12 @@
-actions:
-- action_search_restaurants
-- action_send_email
-- action_verify_location
-- utter_ask_cuisine
-- utter_ask_email
-- utter_ask_emailid
-- utter_ask_howcanhelp
-- utter_ask_location
-- utter_ask_price
-- utter_default
-- utter_goodbye
-- utter_greet
+session_config:
+  session_expiration_time: 0
+  carry_over_slots_to_new_session: true
+intents:
+- restaurant_search
+- greet
+- affirm
+- goodbye
+- stop
 entities:
 - cuisine
 - email
@@ -18,12 +14,17 @@ entities:
 - location
 - people
 - price
-intents:
-- greet
-- restaurant_search
-- affirm
-- goodbye
-- stop
+slots:
+  cuisine:
+    type: text
+  email:
+    type: text
+  emailid:
+    type: text
+  location:
+    type: text
+  price:
+    type: text
 responses:
   utter_ask_cuisine:
   - buttons:
@@ -73,17 +74,16 @@ responses:
   - text: hey there! How may i help you
   - text: Hi, How can I help you!
   - text: Hey, How is it going. How May I help you Today
-session_config:
-  carry_over_slots_to_new_session: true
-  session_expiration_time: 0
-slots:
-  cuisine:
-    type: text
-  email:
-    type: text
-  emailid:
-    type: text
-  location:
-    type: text
-  price:
-    type: text
+actions:
+- action_search_restaurants
+- action_send_email
+- action_verify_location
+- utter_ask_cuisine
+- utter_ask_email
+- utter_ask_emailid
+- utter_ask_howcanhelp
+- utter_ask_location
+- utter_ask_price
+- utter_default
+- utter_goodbye
+- utter_greet
