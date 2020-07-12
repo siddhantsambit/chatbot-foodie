@@ -26,6 +26,31 @@
     - utter_goodbye
     - export
 
+## price specified
+* greet
+    - utter_greet
+* restaurant_search
+    - utter_ask_location
+* restaurant_search{"location": "bangalore"}
+    - slot{"location": "bangalore"}
+    - utter_ask_cuisine
+* restaurant_search{"cuisine": "Chinese"}
+    - slot{"cuisine": "Chinese"}
+    - utter_ask_price
+* restaurant_search{"price":"Lesser than Rs. 300"}
+    - slot{"price": "Lesser than Rs. 300"}
+    - action_search_restaurants
+    - utter_ask_email
+* restaurant_search{"email":"Send Mail"}
+    - slot{"email": "Send Mail"}
+    - utter_ask_emailid
+* restaurant_search{"emailid":"siddhantsambit@gmail.com"}
+    - slot{"emailid": "siddhantsambit@gmail.com"}
+    - action_send_email
+* affirm
+    - utter_goodbye
+    - export
+
 ## complete path 2
 * greet
     - utter_greet
@@ -127,5 +152,287 @@
     - slot{"location": "delhi"}
     - action_search_restaurants
     - slot{"location": "delhi"}
+* affirm
+    - utter_goodbye
+
+## interactive_story_1
+* greet
+    - utter_greet
+* restaurant_search{"location": "Delhi"}
+    - slot{"location": "Delhi"}
+    - utter_ask_cuisine
+* restaurant_search{"cuisine": "North Indian"}
+    - slot{"cuisine": "North Indian"}
+    - utter_ask_price
+* restaurant_search{"price": "More than 700"}
+    - slot{"price": "More than 700"}
+    - action_search_restaurants
+    - slot{"location": "Delhi"}
+    - utter_ask_email
+* goodbye
+    - utter_ask_emailid
+* restaurant_search{"emailid": "siddhantsambit@gmail.com"}
+    - slot{"emailid": "siddhantsambit@gmail.com"}
+    - action_send_email
+* affirm
+    - utter_goodbye
+
+## interactive_story_1
+* greet
+    - utter_greet
+* restaurant_search
+    - utter_ask_location
+* restaurant_search{"location": "Delhi"}
+    - slot{"location": "Delhi"}
+    - utter_ask_cuisine
+* restaurant_search{"cuisine": "South Indian"}
+    - slot{"cuisine": "South Indian"}
+    - utter_ask_price
+* restaurant_search{"price": "Rs. 300 to 700"}
+    - slot{"price": "Rs. 300 to 700"}
+    - action_search_restaurants
+    - slot{"location": "Delhi"}
+    - utter_ask_email
+* restaurant_search{"email": "Send Mail"}
+    - slot{"email": "Send Mail"}
+    - utter_ask_emailid
+* restaurant_search{"emailid": "siddhantsambit@gmail.com"}
+    - slot{"emailid": "siddhantsambit@gmail.com"}
+    - action_send_email
+* affirm
+    - utter_goodbye
+
+## interactive_story_1
+* greet
+    - utter_greet
+* restaurant_search{"location": "Delhi"}
+    - slot{"location": "Delhi"}
+    - action_verify_location
+    - slot{"location": "Delhi"}
+    - utter_ask_cuisine
+* restaurant_search{"cuisine": "chinese"}
+    - slot{"cuisine": "chinese"}
+    - utter_ask_price
+* restaurant_search{"price": "Rs. 300 to 700"}
+    - slot{"price": "Rs. 300 to 700"}
+    - action_search_restaurants
+    - utter_ask_email
+* restaurant_search{"email": "Send Mail"}
+    - slot{"email": "Send Mail"}
+    - utter_ask_emailid
+* restaurant_search{"emailid": "siddhantsambit@gmail.com"}
+    - slot{"emailid": "siddhantsambit@gmail.com"}
+    - action_send_email
+* affirm
+    - utter_goodbye
+
+## interactive_story_1
+* greet
+    - utter_greet
+* restaurant_search{"location": "Delhi"}
+    - slot{"location": "Delhi"}
+    - action_verify_location
+    - slot{"location": "Delhi"}
+    - utter_ask_cuisine
+* restaurant_search{"cuisine": "chinese"}
+    - slot{"cuisine": "chinese"}
+    - utter_ask_price
+* restaurant_search{"price": "More than 700"}
+    - slot{"price": "More than 700"}
+    - action_search_restaurants
+    - utter_ask_email
+* restaurant_search{"email": "Send Mail"}
+    - slot{"email": "Send Mail"}
+    - utter_ask_emailid
+* restaurant_search{"emailid": "siddhantsambit@gmail.com"}
+    - slot{"emailid": "siddhantsambit@gmail.com"}
+    - action_send_email
+* affirm
+    - utter_goodbye
+
+## interactive_story_1
+* greet
+    - utter_greet
+* restaurant_search{"location": "Rishikesh"}
+    - slot{"location": "Rishikesh"}
+    - action_verify_location
+    - slot{"location": null}
+* restaurant_search{"location": "Allahabad"}
+    - slot{"location": "Allahabad"}
+    - action_verify_location
+    - slot{"location": "Allahabad"}
+    - utter_ask_cuisine
+* restaurant_search{"cuisine": "chinese"}
+    - slot{"cuisine": "chinese"}
+    - utter_ask_price
+* restaurant_search{"price": "Rs. 300 to 700"}
+    - slot{"price": "Rs. 300 to 700"}
+    - action_search_restaurants
+    - utter_ask_email
+* restaurant_search{"email": "Send Mail"}
+    - slot{"email": "Send Mail"}
+    - utter_ask_emailid
+* restaurant_search{"emailid": "siddhantsambit@gmail.com"}
+    - slot{"emailid": "siddhantsambit@gmail.com"}
+    - action_send_email
+* affirm
+    - utter_goodbye
+
+## interactive_story_1
+* greet
+    - utter_greet
+* restaurant_search
+    - utter_ask_location
+* restaurant_search{"location": "bangalore"}
+    - slot{"location": "bangalore"}
+    - action_verify_location
+    - slot{"location": "bangalore"}
+    - utter_ask_cuisine
+* restaurant_search{"cuisine": "Italian"}
+    - slot{"cuisine": "Italian"}
+    - utter_ask_price
+* restaurant_search{"price": "Rs. 300 to 700"}
+    - slot{"price": "Rs. 300 to 700"}
+    - action_search_restaurants
+    - utter_ask_email
+* restaurant_search{"email": "Dont Send Email"}
+    - slot{"email": "Dont Send Email"}
+    - utter_goodbye
+
+## interactive_story_1
+* greet
+    - utter_greet
+* restaurant_search
+    - utter_ask_location
+* affirm{"location": "bangalore"}
+    - slot{"location": "bangalore"}
+    - action_verify_location
+    - slot{"location": "bangalore"}
+    - utter_ask_cuisine
+* restaurant_search{"cuisine": "Italian"}
+    - slot{"cuisine": "Italian"}
+    - utter_ask_price
+* restaurant_search{"price": "Rs. 300 to 700"}
+    - slot{"price": "Rs. 300 to 700"}
+    - action_search_restaurants
+    - utter_ask_email
+* restaurant_search{"email": "Dont Send Email"}
+    - slot{"email": "Dont Send Email"}
+    - utter_goodbye
+
+## interactive_story_1
+* greet
+    - utter_greet
+* restaurant_search
+    - utter_ask_location
+* restaurant_search{"location": "bangalore"}
+    - slot{"location": "bangalore"}
+    - action_verify_location
+    - slot{"location": "bangalore"}
+    - utter_ask_cuisine
+* restaurant_search{"cuisine": "Italian"}
+    - slot{"cuisine": "Italian"}
+    - utter_ask_price
+* restaurant_search{"price": "Rs. 300 to 700"}
+    - slot{"price": "Rs. 300 to 700"}
+    - action_search_restaurants
+    - utter_ask_email
+* restaurant_search{"email": "Dont Send Email"}
+    - slot{"email": "Dont Send Email"}
+    - utter_goodbye
+
+## interactive_story_1
+* greet
+    - utter_greet
+* restaurant_search{"location": "bangalore"}
+    - slot{"location": "bangalore"}
+    - action_verify_location
+    - slot{"location": "bangalore"}
+    - utter_ask_cuisine
+* restaurant_search{"cuisine": "italian"}
+    - slot{"cuisine": "italian"}
+    - utter_ask_price
+* restaurant_search{"price": "Rs. 300 to 700"}
+    - slot{"price": "Rs. 300 to 700"}
+    - action_search_restaurants
+    - utter_ask_email
+* restaurant_search{"email": "Dont Send Email"}
+    - slot{"email": "Dont Send Email"}
+    - utter_goodbye
+
+## interactive_story_1
+* greet
+    - utter_greet
+* restaurant_search
+    - utter_ask_location
+    - utter_ask_location
+* affirm{"location": "bangalore"}
+    - slot{"location": "bangalore"}
+    - action_verify_location
+    - slot{"location": "bangalore"}
+    - utter_ask_cuisine
+* restaurant_search{"cuisine": "italian"}
+    - slot{"cuisine": "italian"}
+    - utter_ask_price
+* restaurant_search{"price": "Rs. 300 to 700"}
+    - slot{"price": "Rs. 300 to 700"}
+    - action_search_restaurants
+    - utter_ask_email
+* restaurant_search{"email": "Send Mail"}
+    - slot{"email": "Send Mail"}
+    - utter_ask_emailid
+* restaurant_search{"emailid": "siddhantsambit@gmail.com"}
+    - slot{"emailid": "siddhantsambit@gmail.com"}
+    - action_send_email
+* affirm
+    - utter_goodbye
+
+## interactive_story_1
+* greet
+    - utter_greet
+* restaurant_search{"location": "bangalore"}
+    - slot{"location": "bangalore"}
+    - action_verify_location
+    - slot{"location": "bangalore"}
+    - utter_ask_cuisine
+* restaurant_search{"cuisine": "italian"}
+    - slot{"cuisine": "italian"}
+    - utter_ask_price
+* restaurant_search{"price": "Rs. 300 to 700"}
+    - slot{"price": "Rs. 300 to 700"}
+    - action_search_restaurants
+    - utter_ask_email
+* restaurant_search{"email": "Send Mail"}
+    - slot{"email": "Send Mail"}
+    - utter_ask_emailid
+* restaurant_search{"emailid": "siddhantsambit@gmail.com"}
+    - slot{"emailid": "siddhantsambit@gmail.com"}
+    - action_send_email
+* affirm
+    - utter_goodbye
+
+## interactive_story_1
+* greet
+    - utter_greet
+* restaurant_search
+    - utter_ask_location
+* restaurant_search{"location": "bangalore"}
+    - slot{"location": "bangalore"}
+    - action_verify_location
+    - slot{"location": "bangalore"}
+    - utter_ask_cuisine
+* restaurant_search{"cuisine": "american"}
+    - slot{"cuisine": "american"}
+    - utter_ask_price
+* restaurant_search{"price": "Rs. 300 to 700"}
+    - slot{"price": "Rs. 300 to 700"}
+    - action_search_restaurants
+    - utter_ask_email
+* restaurant_search{"email": "Send Mail"}
+    - slot{"email": "Send Mail"}
+    - utter_ask_emailid
+* restaurant_search{"emailid": "siddhantsambit@gmail.com"}
+    - slot{"emailid": "siddhantsambit@gmail.com"}
+    - action_send_email
 * affirm
     - utter_goodbye
