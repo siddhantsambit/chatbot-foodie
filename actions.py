@@ -18,97 +18,100 @@ sorted_list = []
 
 
 class ActionSearchRestaurants(Action):
-	def name(self):
-		return 'action_search_restaurants'
+    def name(self):
+        return 'action_search_restaurants'
 
-	def run(self, dispatcher, tracker, domain):
-		loc = tracker.get_slot('location')
-		cuisine = tracker.get_slot('cuisine')
-		price = tracker.get_slot('price')
-		location_detail = zomato.get_location(loc, 1)
-		d1 = json.loads(location_detail)
-		lat = d1["location_suggestions"][0]["latitude"]
-		lon = d1["location_suggestions"][0]["longitude"]
-		cuisines_dict = {'bakery': 5, 'chinese': 25, 'cafe': 30, 'italian': 55,'biryani': 7, 'north indian': 50, 'south indian': 85, 'mexican': 73, 'american': 1,'thai':95}
-		results = zomato.restaurant_search(
-		    "", lat, lon, str(cuisines_dict.get(cuisine)), 100)
-		d = json.loads(results)
+    def run(self, dispatcher, tracker, domain):
+        loc = tracker.get_slot('location')
+        cuisine = tracker.get_slot('cuisine')
+        price = tracker.get_slot('price')
+        location_detail = zomato.get_location(loc, 1)
+        d1 = json.loads(location_detail)
+        lat = d1["location_suggestions"][0]["latitude"]
+        lon = d1["location_suggestions"][0]["longitude"]
+        cuisines_dict = {'bakery': 5, 'chinese': 25, 'cafe': 30, 'italian': 55, 'biryani': 7, 'north indian': 50,
+                         'south indian': 85, 'mexican': 73, 'american': 1, 'thai': 95}
+        results = zomato.restaurant_search(
+            "", lat, lon, str(cuisines_dict.get(cuisine)), 100)
+        d = json.loads(results)
 
-		def sort(list):
-			list.sort(key=lambda x: x[3], reverse=True)
-			return list
+        def sort(list):
+            list.sort(key=lambda x: x[3], reverse=True)
+            return list
 
-		def enquiry(lis1):
-			if len(lis1) == 0:
-				return 0
-			else:
-				return 1
+        def enquiry(lis1):
+            if len(lis1) == 0:
+                return 0
+            else:
+                return 1
 
-		response = ""
-		global email_data
-		global sorted_list
-		if d['results_found'] == 0:
-			response = "no results"
-		else:
-			if price == 'Lesser than Rs. 300':
-				for i, restaurant in enumerate(d['restaurants']):
-					averageCostFor2 = restaurant['restaurant']['average_cost_for_two']
-					if averageCostFor2 <= 300:
-						name = restaurant['restaurant']['name']
-						address = restaurant['restaurant']['location']['address']
-						user_rating = restaurant['restaurant']['user_rating']['aggregate_rating']
-						send_list = [name, address, averageCostFor2, user_rating]
-						email_data.append(send_list)
-						if i == 9:
-							break
+        response = ""
+        global email_data
+        global sorted_list
+        if d['results_found'] == 0:
+            response = "no results"
+        else:
+            if price == 'Lesser than Rs. 300':
+                for i, restaurant in enumerate(d['restaurants']):
+                    averageCostFor2 = restaurant['restaurant']['average_cost_for_two']
+                    if averageCostFor2 <= 300:
+                        name = restaurant['restaurant']['name']
+                        address = restaurant['restaurant']['location']['address']
+                        user_rating = restaurant['restaurant']['user_rating']['aggregate_rating']
+                        send_list = [name, address, averageCostFor2, user_rating]
+                        email_data.append(send_list)
+                        if i == 9:
+                            break
 
-			elif price == 'Rs. 300 to 700':
-				for i, restaurant in enumerate(d['restaurants']):
-					averageCostFor2 = restaurant['restaurant']['average_cost_for_two']
-					if averageCostFor2 >= 300 and averageCostFor2 <= 700:
-						name = restaurant['restaurant']['name']
-						address = restaurant['restaurant']['location']['address']
-						user_rating = restaurant['restaurant']['user_rating']['aggregate_rating']
-						send_list = [name, address, averageCostFor2, user_rating]
-						email_data.append(send_list)
-						if i == 9:
-							break
+            elif price == 'Rs. 300 to 700':
+                for i, restaurant in enumerate(d['restaurants']):
+                    averageCostFor2 = restaurant['restaurant']['average_cost_for_two']
+                    if averageCostFor2 >= 300 and averageCostFor2 <= 700:
+                        name = restaurant['restaurant']['name']
+                        address = restaurant['restaurant']['location']['address']
+                        user_rating = restaurant['restaurant']['user_rating']['aggregate_rating']
+                        send_list = [name, address, averageCostFor2, user_rating]
+                        email_data.append(send_list)
+                        if i == 9:
+                            break
 
-			elif price == 'More than 700':
-				for i, restaurant in enumerate(d['restaurants']):
-					averageCostFor2 = restaurant['restaurant']['average_cost_for_two']
-					if averageCostFor2 >= 700:
-						name = restaurant['restaurant']['name']
-						address = restaurant['restaurant']['location']['address']
-						user_rating = restaurant['restaurant']['user_rating']['aggregate_rating']
-						send_list = [name, address, averageCostFor2, user_rating]
-						print(send_list)
-						email_data.append(send_list)
-						if i == 9:
-							break
-		print(email_data)
-		sorted_list = sort(email_data)
+            elif price == 'More than 700':
+                for i, restaurant in enumerate(d['restaurants']):
+                    averageCostFor2 = restaurant['restaurant']['average_cost_for_two']
+                    if averageCostFor2 >= 700:
+                        name = restaurant['restaurant']['name']
+                        address = restaurant['restaurant']['location']['address']
+                        user_rating = restaurant['restaurant']['user_rating']['aggregate_rating']
+                        send_list = [name, address, averageCostFor2, user_rating]
+                        print(send_list)
+                        email_data.append(send_list)
+                        if i == 9:
+                            break
+        print(email_data)
+        sorted_list = sort(email_data)
 
-		if(enquiry(sorted_list) == 0):
-			dispatcher.utter_message("No results found!!!")
+        if (enquiry(sorted_list) == 0):
+            dispatcher.utter_message("No results found!!!")
 
-		else:
-			for i, detail in enumerate(sorted_list):
-				j=i
-				response = str(j+1) + ". " + detail[0] + " in " + \
-				               detail[1] + " has been rated " + detail[3] + "\n"
-				dispatcher.utter_message(response)
-				if i == 4:
-					break
+        else:
+            for i, detail in enumerate(sorted_list):
+                j = i
+                response = str(j + 1) + ". " + detail[0] + " in " + \
+                           detail[1] + " has been rated " + detail[3] + "\n"
+                dispatcher.utter_message(response)
+                if i == 4:
+                    break
 
-		return []
+        return []
 
 
 class ActionSendEmail(Action):
     def __init__(self):
         pass
+
     def name(self):
         return 'action_send_email'
+
     def run(self, dispatcher, tracker, domain):
         # Get user's email id
         to_email = tracker.get_slot('emailid')
@@ -124,9 +127,11 @@ class ActionSendEmail(Action):
         d_email_subj = "Top " + str(email_rest_count) + " " + cuisine + " restaurants in " + str(loc)
         d_email_msg = "Hi there!!! Here are the " + d_email_subj + "." + "\n"
         for i, restaurant in enumerate(sorted_list):
-            d_email_msg = d_email_msg + restaurant[0] + " in " + restaurant[1] + " has been rated " + restaurant[3] + "\n"
+            j = i
+            d_email_msg = d_email_msg + str(j + 1) + ". " +restaurant[0] + " in " + restaurant[1] + " has been rated " + restaurant[3] + "\n"
             if i == (email_rest_count - 1):
                 break
+
         s = smtplib.SMTP_SSL("smtp.gmail.com", 465)
         # s.starttls()
         s.login("foodieupgradchatbot@gmail.com", "foodie1234")
@@ -138,7 +143,8 @@ class ActionSendEmail(Action):
         s.send_message(msg)
         s.quit()
         dispatcher.utter_message("**** Email Sent to " + to_email + " ! HAPPY DINING :) ****")
-        return[]
+        return []
+
 
 class VerifyLocation(Action):
     def name(self):
@@ -179,5 +185,6 @@ class VerifyLocation(Action):
             return [SlotSet('location', loc)]
 
     def verify_location(self, loc):
+        if loc is None:
+            return False
         return loc.lower() in self.TIER_1 or loc.lower() in self.TIER_2
-

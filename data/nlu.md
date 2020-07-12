@@ -11,6 +11,7 @@
 - great choice
 - sounds really good
 - thanks
+- thank you
 
 ## intent:goodbye
 - bye
@@ -21,6 +22,7 @@
 - farewell
 - Bye bye
 - have a good one
+- bonjour
 
 ## intent:greet
 - hey
@@ -219,8 +221,16 @@
 - in [Mumbai](location)
 - [tinaghosh1990@gmail.com](emailid)
 - I'm hungry. Looking out for some good [chinese](cuisine) restaurants in [Chandigarh](location)
-- [Lesser than Rs. 300](price)
-- [Dont Send Email](email)
+- Looking for some [cafe](cuisine) in [Kolkata](location)
+- Yes, please
+- kindly send it to [siddhantsambit@gmail.com](emailid)
+- Please suggest some [italian](cuisine) food
+- [bhadrak](location)
+- [cuttack](location)
+- [soumyamoharana1992@gmail.com](emailid)
+
+## intent:stop
+- ffawddwvevevfevefvefves
 
 ## synonym:4
 - four

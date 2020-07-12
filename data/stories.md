@@ -532,3 +532,57 @@
 * restaurant_search{"email": "Dont Send Email"}
     - slot{"email": "Dont Send Email"}
     - utter_goodbye
+
+## interactive_story_1
+* greet
+    - utter_greet
+* stop
+    - utter_default
+    - utter_ask_howcanhelp
+* restaurant_search{"cuisine": "cafe", "location": "Kolkata"}
+    - slot{"cuisine": "cafe"}
+    - slot{"location": "Kolkata"}
+    - action_verify_location
+    - slot{"location": "Kolkata"}
+    - utter_ask_price
+* restaurant_search{"price": "More than 700"}
+    - slot{"price": "More than 700"}
+    - action_search_restaurants
+    - utter_ask_email
+    - utter_ask_email
+* restaurant_search
+    - utter_ask_emailid
+* restaurant_search{"emailid": "siddhantsambit@gmail.com"}
+    - slot{"emailid": "siddhantsambit@gmail.com"}
+    - action_send_email
+* goodbye
+    - utter_goodbye
+
+## interactive_story_1
+* greet
+    - utter_greet
+* restaurant_search{"cuisine": "italian"}
+    - slot{"cuisine": "italian"}
+    - utter_ask_location
+* restaurant_search{"location": "bhadrak"}
+    - slot{"location": "bhadrak"}
+    - action_verify_location
+    - slot{"location": null}
+* restaurant_search{"location": "cuttack"}
+    - slot{"location": "cuttack"}
+    - action_verify_location
+    - slot{"location": "cuttack"}
+    - utter_ask_price
+* restaurant_search{"price": "Rs. 300 to 700"}
+    - slot{"price": "Rs. 300 to 700"}
+    - action_search_restaurants
+    - utter_ask_email
+    - utter_ask_email
+* restaurant_search{"email": "Send Mail"}
+    - slot{"email": "Send Mail"}
+    - utter_ask_emailid
+* restaurant_search{"emailid": "soumyamoharana1992@gmail.com"}
+    - slot{"emailid": "soumyamoharana1992@gmail.com"}
+    - action_send_email
+* affirm
+    - utter_goodbye
