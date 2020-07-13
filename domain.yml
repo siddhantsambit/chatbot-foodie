@@ -19,8 +19,8 @@ entities:
 - people
 - price
 intents:
-- greet
 - restaurant_search
+- greet
 - affirm
 - goodbye
 - stop

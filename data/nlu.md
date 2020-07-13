@@ -251,7 +251,24 @@
 - Please find me [cafe](cuisine)s in [Goa](location)
 - Looking for some [bakery](cuisine) in [Bangalore]{"entity": "location", "value": "bangalore"}
 - [bombay]{"entity": "location", "value": "Mumbai"}
-- [thai](cuisine)
+- I am looking for restaurants in [Mumbai](location)
+- I am looking for restuarants in [Mumbai](location)
+- [Chinese]{"entity": "cuisine", "value": "chinese"}
+- [Rs. 300 to 700](price)
+- [Dont Send Email](email)
+- Please find me [cafe](cuisine)s in [Goa](location)
+- Looking for some [bakery](cuisine) in [Bangalore]{"entity": "location", "value": "bangalore"}
+- [bombay]{"entity": "location", "value": "Mumbai"}
+- please suggest some restaurent in [kolkata]{"entity": "location", "value": "Kolkata"}
+- pleaase suggest some good restuarent in [Amritsar](location)
+- please suggest some restaurent in [kochi](location)
+- I am looking for [chines]{"entity": "cuisine", "value": "chinese"} restaurent in [Jaipur](location)
+- please provide some good restaurent in [Agra](location)
+- please suggest some restaurent in [jalandhar](location)
+- I am looking for restaurent in [Mumbai](location)
+- please suggest reastaurent in [Mumbai](location)
+- looking for restaurents in [Mumbai](location)
+- [Chinese]{"entity": "cuisine", "value": "chinese"}
 - [Rs. 300 to 700](price)
 - [Dont Send Email](email)
 
@@ -282,8 +299,8 @@
 
 ## synonym:Mumbai
 - mumbai
-- Bombay
 - bombay
+- Bombay
 
 ## synonym:Thiruvananthapuram
 - Trivandrum

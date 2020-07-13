@@ -25,6 +25,7 @@ class ActionSearchRestaurants(Action):
         loc = tracker.get_slot('location')
         cuisine = tracker.get_slot('cuisine')
         price = tracker.get_slot('price')
+
         location_detail = zomato.get_location(loc, 1)
         d1 = json.loads(location_detail)
         lat = d1["location_suggestions"][0]["latitude"]
@@ -142,8 +143,8 @@ class ActionSendEmail(Action):
         msg['To'] = to_email
         s.send_message(msg)
         s.quit()
-        sorted_list.clear()
         email_data.clear()
+        sorted_list.clear()
         dispatcher.utter_message("**** Email Sent to " + to_email + " ! HAPPY DINING :) ****")
         return []
 
