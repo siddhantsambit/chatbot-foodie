@@ -68,7 +68,8 @@ responses:
   utter_default:
   - text: i cannot understand
   utter_goodbye:
-  - text: goodbye :(
+  - text: goodbye :)
+  - text: Bon Appetit!
   - text: Bye-bye
   utter_greet:
   - text: hey there! How may i help you
