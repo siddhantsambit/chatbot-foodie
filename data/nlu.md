@@ -12,6 +12,8 @@
 - sounds really good
 - thanks
 - thank you
+- that's Right
+- thats great
 
 ## intent:goodbye
 - bye
@@ -37,6 +39,8 @@
 - Hola
 - Hey
 - Hello!
+- Hello
+- Howdy
 
 ## intent:restaurant_search
 - i'm looking for a place to eat
@@ -148,7 +152,7 @@
 - [Chinese]{"entity": "cuisine", "value": "chinese"}
 - [Thai]{"entity": "cuisine", "value": "thai"}
 - [Cafe]{"entity": "cuisine", "value": "cafe"}
-- [Bhai]{"entity": "cuisine", "value": "biryani"}
+- [Biryani]{"entity": "cuisine", "value": "biryani"}
 - [Bakery]{"entity": "cuisine", "value": "bakery"}
 - [chinese](cuisine)
 - [thai](cuisine)
@@ -228,6 +232,28 @@
 - [bhadrak](location)
 - [cuttack](location)
 - [soumyamoharana1992@gmail.com](emailid)
+- I am looking for restaurnts
+- [bongaon](location)
+- please find for [Kolkata](location)
+- send it to [siddhantsambit@gmail.com](emailid)
+- I am looking for restaurant in [Azamgarh](location)
+- in [Siliguri](location)
+- I am looking for [chines]{"entity": "cuisine", "value": "chinese"} restarant in [Balasore](location)
+- Kindly send it to [siddhantsambit@gmail.com](emailid)
+- Please find me restaurants in [Nepal](location)
+- [Chennai](location)
+- Find me [Biryani]{"entity": "cuisine", "value": "biryani"} restaurants in [Nagpur](location)
+- I am looking for [Biryani]{"entity": "cuisine", "value": "biryani"} places in [Hyderabad](location)
+- I am looking for places in [Singur](location)
+- okay check for [Coimbatore](location)
+- I am looking for [cafe](cuisine) in [Lucknow](location)
+- send it to [tinaghosh1990@gmail.com](emailid)
+- Please find me [cafe](cuisine)s in [Goa](location)
+- Looking for some [bakery](cuisine) in [Bangalore]{"entity": "location", "value": "bangalore"}
+- [bombay]{"entity": "location", "value": "Mumbai"}
+- [thai](cuisine)
+- [Rs. 300 to 700](price)
+- [Dont Send Email](email)
 
 ## intent:stop
 - ffawddwvevevfevefvefves
@@ -283,7 +309,7 @@
 - Bangalore
 
 ## synonym:biryani
-- Bhai
+- Biryani
 - biriyani
 - Biriyani
 

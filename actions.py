@@ -101,7 +101,7 @@ class ActionSearchRestaurants(Action):
                 dispatcher.utter_message(response)
                 if i == 4:
                     break
-
+        d.clear()
         return []
 
 
@@ -142,6 +142,8 @@ class ActionSendEmail(Action):
         msg['To'] = to_email
         s.send_message(msg)
         s.quit()
+        sorted_list.clear()
+        email_data.clear()
         dispatcher.utter_message("**** Email Sent to " + to_email + " ! HAPPY DINING :) ****")
         return []
 
